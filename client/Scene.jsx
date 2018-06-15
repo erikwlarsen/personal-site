@@ -5,7 +5,13 @@ class Scene extends Component {
   constructor(props) {
     super(props);
 
-    this.moving = true;
+    this.state = {
+      moving: true,
+      lastX: null,
+      lastY: null,
+      callable: true,
+    };
+
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
     this.animate = this.animate.bind(this);
@@ -16,9 +22,7 @@ class Scene extends Component {
   componentDidMount() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     const width = this.mount.clientWidth;
-    this.lastX = width / 2;
     const height = this.mount.clientHeight;
-    this.lastY = height / 2;
     this.renderer.setSize(width, height);
     this.renderer.autoClear = false;
 
@@ -46,7 +50,7 @@ class Scene extends Component {
     this.scene.add(this.globe);
 
     const loader = new THREE.TextureLoader();
-    const imageUris = ['earth_bright_blue.jpg', 'earthtruecolor_nasa_big.jpg', 'nasa_earth.jpg', 'simple_earth.png'];
+    const imageUris = ['earth_bright_blue.jpg', '4K_earth.jpg', 'earthtruecolor_nasa_big.jpg', 'nasa_earth.jpg', 'simple_earth.png'];
     const imageIdx = 1;
     const imgLink = 'assets/images/' + imageUris[imageIdx];
     loader.load(imgLink, (texture) => {
@@ -80,8 +84,7 @@ class Scene extends Component {
   }
 
   animate() {
-    // this.globe.rotation.x += 0.003;
-    if (this.moving) this.move();
+    if (this.state.moving) this.move();
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(this.animate);
   }
@@ -91,18 +94,28 @@ class Scene extends Component {
   }
 
   handleDrag(e) {
-    e.preventDefault();
-    this.moving = false;
-    const xMove = e.clientX - this.lastX;
-    const yMove = e.clientY - this.lastY;
-    this.globe.rotation.y += xMove * 0.003;
-    this.globe.rotation.x += yMove * 0.003;
-    this.lastX = e.clientX;
-    this.lastY = e.clientY;
+    if (this.state.callable) {
+      e.preventDefault();
+      const xMove = this.state.lastX ? e.clientX - this.state.lastX : 0;
+      const yMove = this.state.lastY ? e.clientY - this.state.lastY : 0;
+      this.globe.rotation.y += xMove * 0.0035;
+      this.globe.rotation.x += yMove * 0.0035;
+      this.setState({
+        moving: false,
+        lastX: e.clientX,
+        lastY: e.clientY,
+        callable: false,
+      });
+      setTimeout(() => { this.setState({ callable: true }) }, 20);
+    }
   }
 
   handleDragEnd() {
-    this.moving = true;
+    this.setState({
+      moving: true,
+      lastX: null,
+      lastY: null,
+    });
   }
 
   render() {
