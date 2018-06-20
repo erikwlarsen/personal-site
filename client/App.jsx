@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Globe from './Globe.jsx';
+import Globe from './components/Globe.jsx';
 
 class App extends Component {
   render() {
