@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 const cesiumSource = 'node_modules/cesium/Source';
@@ -35,7 +36,8 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        user: ['style-loader', 'css-loader', 'sass-loader'],
+        // include: path.resolve(__dirname, 'client/stylesheets/style.scss'),
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
@@ -50,6 +52,9 @@ module.exports = {
     new webpack.DefinePlugin({
       // Define relative base path in cesium for loading assets
       CESIUM_BASE_URL: JSON.stringify('')
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.bundle.css',
     }),
   ],
   resolve: {
