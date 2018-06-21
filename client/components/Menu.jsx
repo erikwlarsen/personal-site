@@ -10,7 +10,7 @@ const Menu = props => {
     const lowerCaseName = name.toLowerCase();
     return (
       <div
-        className={`menu-btn${props.selectedComponent === lowerCaseName ? ' checked' : ''}`}
+        className={`menu-btn${props.selectedComponent === lowerCaseName ? ' selected-component' : ''}`}
         id={lowerCaseName}
         key={lowerCaseName}
         onClick={handleClick}>
