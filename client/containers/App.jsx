@@ -9,18 +9,13 @@ import * as actions from '../actions/actionCreators.js';
 
 const mapStateToProps = (state) => ({
   selectedComponent: state.main.selectedComponent,
+  selectedProject: state.main.selectedProject,
 });
 
 const mapDispatchToProps = {
   selectComponent: actions.selectComponent,
+  selectProject: actions.selectProject,
 };
-
-const componentMap = {
-  main: <Main />,
-  projects: <Projects />,
-  globe: <Globe />,
-  about: <About />,
-}
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +26,16 @@ class App extends Component {
     const {
       selectComponent,
       selectedComponent,
+      selectProject,
+      selectedProject,
     } = this.props;
+
+    const componentMap = {
+      main: <Main />,
+      projects: <Projects selectProject={selectProject} selectedProject={selectedProject}/>,
+      globe: <Globe />,
+      about: <About />,
+    }
 
     return (
       <div>
