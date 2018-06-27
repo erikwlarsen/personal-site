@@ -38,7 +38,7 @@ class App extends Component {
     }
 
     return (
-      <div>
+      <div id="app">
         <h1>SICK APP</h1>
         <Menu
           selectComponent={selectComponent}
