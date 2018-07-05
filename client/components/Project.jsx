@@ -9,6 +9,7 @@ const Project = ({ title, link, description, image, idx, selected, selectProject
         <div>
           <p>{description}</p>
           <img src={image} />
+          {/* figure out how to use img complete property to only load when ready */}
           <p onClick={() => openInNewTab(link)}>view on github</p>
         </div>
       }
