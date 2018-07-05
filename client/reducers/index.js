@@ -4,7 +4,7 @@ import * as types from '../actions/actionTypes.js';
 
 const initialState = {
   selectedComponent: 'main',
-  selectedProject: 'null',
+  selectedProject: 0,
   projects: [
     {
       title: 'woven-js',
