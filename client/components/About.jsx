@@ -1,9 +1,5 @@
 import React from 'react';
-
-const openInNewTab = (url) => {
-  const win = window.open(url, '_blank');
-  win.focus();
-}
+import { openInNewTab } from '../util/util.js';
 
 const githubUrl = 'https://github.com/erikwlarsen';
 const linkedinUrl = 'https://www.linkedin.com/in/erik-w-larsen/';
