@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Project = (props) => {
+const Project = ({ title, link, description, image, idx, selected, selectProject }) => {
   return (
     <div>
-      Hey it's a project
+      <h3>{title}</h3>
+      <p>Description: {description}</p>
+      <img src={image} />
+      <p>Selected? {selected}</p>
     </div>
   );
 }
