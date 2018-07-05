@@ -10,6 +10,7 @@ import * as actions from '../actions/actionCreators.js';
 const mapStateToProps = (state) => ({
   selectedComponent: state.main.selectedComponent,
   selectedProject: state.main.selectedProject,
+  projects: state.main.projects,
 });
 
 const mapDispatchToProps = {
@@ -28,11 +29,16 @@ class App extends Component {
       selectedComponent,
       selectProject,
       selectedProject,
+      projects,
     } = this.props;
 
     const componentMap = {
       main: <Main />,
-      projects: <Projects selectProject={selectProject} selectedProject={selectedProject}/>,
+      projects: <Projects
+        projects={projects}
+        selectProject={selectProject}
+        selectedProject={selectedProject}
+      />,
       globe: <Globe />,
       about: <About />,
     }
