@@ -9,3 +9,7 @@ export const selectProject = (project) => ({
   type: types.SELECT_PROJECT,
   payload: project,
 });
+
+export const randomHello = () => ({
+  type: types.RANDOM_HELLO,
+});
