@@ -11,11 +11,14 @@ const mapStateToProps = (state) => ({
   selectedComponent: state.main.selectedComponent,
   selectedProject: state.main.selectedProject,
   projects: state.main.projects,
+  helloWorlds: state.main.helloWorlds,
+  selectedHello: state.main.selectedHello,
 });
 
 const mapDispatchToProps = {
   selectComponent: actions.selectComponent,
   selectProject: actions.selectProject,
+  randomHello: actions.randomHello,
 };
 
 class App extends Component {
@@ -30,10 +33,16 @@ class App extends Component {
       selectProject,
       selectedProject,
       projects,
+      randomHello,
+      helloWorlds,
+      selectedHello,
     } = this.props;
 
     const componentMap = {
-      main: <Main />,
+      main: <Main
+        randomHello={randomHello}
+        selectedHello={helloWorlds[selectedHello]}
+      />,
       projects: <Projects
         projects={projects}
         selectProject={selectProject}
