@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Menu = props => {
+const Menu = ({ selectComponent, selectedComponent }) => {
   const handleClick = (e) => {
-    props.selectComponent(e.target.id);
+    selectComponent(e.target.id);
   };
 
   const buttonNames = ['Main', 'Projects', 'Globe', 'About'];
@@ -10,7 +10,7 @@ const Menu = props => {
     const lowerCaseName = name.toLowerCase();
     return (
       <div
-        className={`menu-btn${props.selectedComponent === lowerCaseName ? ' selected-component' : ''}`}
+        className={`menu-btn${selectedComponent === lowerCaseName ? ' selected-component' : ''}`}
         id={lowerCaseName}
         key={lowerCaseName}
         onClick={handleClick}>
