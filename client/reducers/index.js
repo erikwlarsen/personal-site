@@ -184,9 +184,10 @@ const initialState = {
 };
 
 const copyState = (state) => {
-  const { projects } = state;
+  const { projects, helloWorlds } = state;
   const projectsCopy = projects.map((project) => ({ ...project }));
-  return ({ ...state, projects: projectsCopy });
+  const helloWorldsCopy = helloWorlds.slice();
+  return ({ ...state, projects: projectsCopy, helloWords: helloWorldsCopy });
 }
 
 const mainReducer = (state = initialState, action) => {
@@ -198,7 +199,10 @@ const mainReducer = (state = initialState, action) => {
       const selectedProject = action.payload;
       return ({ ...copyState(state), selectedProject });
     case types.RANDOM_HELLO:
-      // let selectedHello = 
+      let selectedHello = Math.floor(Math.random() * state.helloWorlds.length);
+      while (selectedHello === state.selectedHello) {
+        selectedHello = Math.floor(Math.random() * state.helloWorlds.length);
+      }
       return ({ ...copyState(state), selectedHello });
     default:
       return state;
