@@ -54,12 +54,13 @@ class App extends Component {
 
     return (
       <div id="app">
-        <h1>SICK APP</h1>
         <Menu
           selectComponent={selectComponent}
           selectedComponent={selectedComponent}
         />
-        {componentMap[selectedComponent]}
+        <div id="component-container">
+          {componentMap[selectedComponent]}
+        </div>
       </div>
     );
   }
