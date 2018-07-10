@@ -21,6 +21,7 @@
   padding: 10px 10px 10px 13px;
   font-style: italic;
   font-weight: bold;
+  transition: color 1s, background-color 1s;
 }
 
 #hello-again:focus {
@@ -32,6 +33,7 @@
 #hello-again:hover {
   color: $color-orange;
   background: $color-lightgreen;
+  cursor: ne-resize;
 }
 
 code {
@@ -40,4 +42,8 @@ code {
   color: $color-green;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+code:hover {
+  cursor: help;
 }

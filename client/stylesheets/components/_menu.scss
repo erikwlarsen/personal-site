@@ -7,23 +7,26 @@
 }
 
 .menu-btn {
+  background: $color-transparent;
   padding-left: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
+  border-radius: 8px;
+  transition: color 300ms;
+}
+
+.menu-btn:hover {
+  background: linear-gradient(to right, $color-purple, $color-transparent);
+  color: $color-orange;
+  cursor: nw-resize;
 }
 
 .selected-component {
-  // animation: select 1000ms;
-  border-radius: 8px;
   background: linear-gradient(to right, $color-navy, $color-transparent);
   color: $color-green;
 }
 
-// @keyframes select {
-//   0% {
-//     background
-//   }
-//   100% {
-//     background: linear-gradient(to right, $color-navy, $color-purple);
-//   }
-// }
+.selected-component:hover {
+  background: linear-gradient(to right, $color-navy, $color-transparent);
+  color: $color-pink;
+}
