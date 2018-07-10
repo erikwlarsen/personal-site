@@ -1,4 +1,43 @@
+@import '../constants/colors';
+
+#main-component {
+  background: linear-gradient(to right, $color-black, $color-grey-transparent);
+  padding: 5px 10px 10px 10px;
+  border-radius: 8px;
+  position: relative;
+  font-size: 1.75em;
+}
+
+#hello-again {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: Menlo, Monaco, sans-serif;
+  background: $color-green;
+  font-size: 1em;
+  border-radius: 8px;
+  color: $color-grey-transparent;
+  border: none;
+  padding: 10px 10px 10px 13px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#hello-again:focus {
+  outline-style: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#hello-again:active {
+  color: $color-lightgrey-transparent;
+  background: $color-lightgreen;
+}
+
 code {
+  // background: $color-black;
+  font-family: Monaco, monospace;
+  color: $color-green;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
