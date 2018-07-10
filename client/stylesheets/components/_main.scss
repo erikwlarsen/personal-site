@@ -29,8 +29,8 @@
   box-shadow: none;
 }
 
-#hello-again:active {
-  color: $color-lightgrey-transparent;
+#hello-again:hover {
+  color: $color-orange;
   background: $color-lightgreen;
 }
 

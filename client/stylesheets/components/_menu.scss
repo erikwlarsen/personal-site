@@ -2,22 +2,21 @@
 
 #menu-parent {
   margin-left: 20px;
-  margin-top: 20px;
   font-size: 2em;
   max-width: 1200px;
 }
 
 .menu-btn {
   padding-left: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .selected-component {
   // animation: select 1000ms;
   border-radius: 8px;
   background: linear-gradient(to right, $color-navy, $color-transparent);
-  color: $color-pink-grey;
+  color: $color-green;
 }
 
 // @keyframes select {

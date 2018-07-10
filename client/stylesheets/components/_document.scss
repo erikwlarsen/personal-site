@@ -2,8 +2,9 @@
 
 body {
   margin: 0;
-  font-family: Menlo, Monaco, sans-serif;
-  background: linear-gradient(to right, $color-blue, $color-pink);
+  font-family: Palatino, Times, 'Times New Roman', serif;
+  background: linear-gradient(to right, $color-blue-transparent, $color-pink-transparent), url("https://s3.us-east-2.amazonaws.com/elarsen-personal-site/windows+color.jpg");
+  background-size: cover, cover;
   font-size: 12px;
   color: $color-navy;
 }
