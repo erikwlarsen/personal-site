@@ -20,7 +20,7 @@ class Main extends Component {
             {selectedHello}
           </code>
         </div>
-        <div id="hello-again" onClick={randomHello}>Hello again!</div>
+        <button type="button" id="hello-again" onClick={randomHello}>Hello again!</button>
       </div>
     );
   }
