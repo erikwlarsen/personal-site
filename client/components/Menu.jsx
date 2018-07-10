@@ -23,7 +23,7 @@ const Menu = ({ selectComponent, selectedComponent }) => {
     <div id="menu-parent">
       {buttons}
     </div>
-  )
+  );
 }
 
 export default Menu;
