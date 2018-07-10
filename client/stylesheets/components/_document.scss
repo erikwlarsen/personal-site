@@ -1,0 +1,9 @@
+@import '../constants/colors';
+
+body {
+  margin: 0;
+  font-family: Menlo, Monaco, sans-serif;
+  background: linear-gradient(to right, $color-blue, $color-pink);
+  font-size: 12px;
+  color: $color-navy;
+}
