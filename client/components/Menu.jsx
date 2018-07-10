@@ -14,7 +14,7 @@ const Menu = ({ selectComponent, selectedComponent }) => {
         id={lowerCaseName}
         key={lowerCaseName}
         onClick={handleClick}>
-        {name}
+        {lowerCaseName}
       </div>
     );
   });
