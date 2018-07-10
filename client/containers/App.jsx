@@ -54,6 +54,7 @@ class App extends Component {
 
     return (
       <div id="app">
+        <div id="header">erik<br></br>larsen</div>
         <Menu
           selectComponent={selectComponent}
           selectedComponent={selectedComponent}
