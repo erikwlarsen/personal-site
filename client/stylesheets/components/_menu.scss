@@ -1,3 +1,30 @@
-.selected-component {
-  background: blue;
+@import '../constants/colors';
+
+#menu-parent {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 2em;
+  max-width: 1200px;
 }
+
+.menu-btn {
+  padding-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.selected-component {
+  // animation: select 1000ms;
+  border-radius: 8px;
+  background: linear-gradient(to right, $color-navy, $color-transparent);
+  color: $color-pink-grey;
+}
+
+// @keyframes select {
+//   0% {
+//     background
+//   }
+//   100% {
+//     background: linear-gradient(to right, $color-navy, $color-purple);
+//   }
+// }
