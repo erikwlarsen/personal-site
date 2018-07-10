@@ -180,7 +180,7 @@ end. `, // Algol-60
     PrintF('Hello world\\n')
 ENDPROC`, // AmigaE
   ],
-  selectedHello: null,
+  selectedHello: 7,
 };
 
 const copyState = (state) => {
