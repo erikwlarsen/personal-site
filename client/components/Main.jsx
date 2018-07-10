@@ -15,10 +15,12 @@ class Main extends Component {
 
     return (
       <div>
-        <code onClick={() => openInNewTab('http://wiki.c2.com/?HelloWorldInManyProgrammingLanguages')}>
-          {selectedHello}
-        </code>
-        <div onClick={randomHello}>Hello again!</div>
+        <div id="main-component">
+          <code onClick={() => openInNewTab('http://wiki.c2.com/?HelloWorldInManyProgrammingLanguages')}>
+            {selectedHello}
+          </code>
+        </div>
+        <div id="hello-again" onClick={randomHello}>Hello again!</div>
       </div>
     );
   }
