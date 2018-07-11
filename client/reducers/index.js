@@ -187,7 +187,7 @@ const copyState = (state) => {
   const { projects, helloWorlds } = state;
   const projectsCopy = projects.map((project) => ({ ...project }));
   const helloWorldsCopy = helloWorlds.slice();
-  return ({ ...state, projects: projectsCopy, helloWords: helloWorldsCopy });
+  return ({ ...state, projects: projectsCopy, helloWorlds: helloWorldsCopy });
 }
 
 const mainReducer = (state = initialState, action) => {
