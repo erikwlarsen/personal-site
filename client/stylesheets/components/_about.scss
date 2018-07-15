@@ -1,0 +1,26 @@
+@import '../constants/colors';
+
+#about-list {
+  background: linear-gradient(to right, $color-black, $color-grey-transparent);
+  padding: 5px 10px 10px 10px;
+  border-radius: 8px;
+  position: relative;
+  font-size: 1.75em;
+  min-height: 392px;
+}
+
+#about-list li {
+  display: block;
+  margin: 0px 0px 20px 0px;
+  font-family: Monaco, monospace;
+  color: $color-green;
+  transition: color 500ms;
+}
+
+#about-list li.external-link {
+  color: $color-orange;
+}
+
+#about-list li.external-link:hover {
+  color: $color-pink;
+}
