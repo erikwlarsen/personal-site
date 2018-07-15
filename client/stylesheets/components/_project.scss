@@ -1,0 +1,14 @@
+// @import '../constants/colors';
+
+.project {
+  font-size: 1.75em;
+  height: 40px;
+  position: relative;
+  transition: height 1s;
+}
+
+.project.selected {
+  height: 300px;
+}
+
+// make a keyframes animation that controls the height and 
