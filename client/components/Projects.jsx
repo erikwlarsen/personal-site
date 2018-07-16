@@ -8,13 +8,26 @@ const Projects = ({ projects, selectedProject, selectProject }) => {
       idx={idx}
       key={proj.title}
       selected={selectedProject === idx}
-      selectProject={selectProject}
     />
   ));
 
+  const projectTitles = projects.map((proj, idx) => {
+    const selected = selectedProject === idx;
+    return (
+      <span
+        className={`project-title${selected ? ' selected' : ''}`}
+        onClick={() => selectProject(idx)}
+        key={`title ${proj.title}`}
+      >{proj.title}</span>
+    );
+  });
+
   return (
     <div>
-      {projComponents}
+      <div>
+        {projectTitles}
+      </div>
+      {projComponents[selectedProject]}
     </div>
   );
 }
