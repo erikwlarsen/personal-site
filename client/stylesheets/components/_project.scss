@@ -4,11 +4,28 @@
   font-size: 1.75em;
   height: 40px;
   position: relative;
-  transition: height 1s;
+  transition: height 500ms;
+  
 }
 
 .project.selected {
   height: 300px;
+}
+
+.project .sub-project {
+  // visibility: hidden;
+  opacity: 0;
+}
+
+.project.selected .sub-project {
+  visibility: visible;
+  opacity: 1;
+  animation: reveal 1000ms;
+}
+
+@keyframes reveal {
+  0% { visibility: visible; opacity: 0; }
+  100% { visibility: visible; opacity: 1 }
 }
 
 // make a keyframes animation that controls the height and 
