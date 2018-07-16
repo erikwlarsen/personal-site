@@ -18,13 +18,13 @@ const Projects = ({ projects, selectedProject, selectProject }) => {
         className={`project-title${selected ? ' selected' : ''}`}
         onClick={() => selectProject(idx)}
         key={`title ${proj.title}`}
-      >{proj.title}</span>
+      >{proj.title.replace('-', '\u2011')}</span>
     );
   });
 
   return (
     <div>
-      <div>
+      <div id="titles-container">
         {projectTitles}
       </div>
       {projComponents[selectedProject]}
