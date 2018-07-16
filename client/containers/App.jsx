@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Globe from '../components/Globe.jsx';
+// import Globe from '../components/Globe.jsx';
 import Menu from '../components/Menu.jsx';
 import Main from '../components/Main.jsx';
 import Projects from '../components/Projects.jsx';
