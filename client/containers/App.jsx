@@ -48,7 +48,7 @@ class App extends Component {
         selectProject={selectProject}
         selectedProject={selectedProject}
       />,
-      globe: <Globe />,
+      // globe: <Globe />,
       about: <About />,
     }
 

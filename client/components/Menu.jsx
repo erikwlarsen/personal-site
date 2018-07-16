@@ -5,7 +5,7 @@ const Menu = ({ selectComponent, selectedComponent }) => {
     selectComponent(e.target.id);
   };
 
-  const buttonNames = ['Main', 'Projects', 'Globe', 'About'];
+  const buttonNames = ['Main', 'Projects', /*'Globe',*/ 'About'];
   const buttons = buttonNames.map((name) => {
     const lowerCaseName = name.toLowerCase();
     return (
