@@ -1,5 +1,6 @@
 import React from 'react';
-import Project from './Project.jsx';
+import PropTypes from 'prop-types';
+import Project from './Project';
 
 const Projects = ({ projects, selectedProject, selectProject }) => {
   const projComponents = projects.map((proj, idx) => (
@@ -14,11 +15,14 @@ const Projects = ({ projects, selectedProject, selectProject }) => {
   const projectTitles = projects.map((proj, idx) => {
     const selected = selectedProject === idx;
     return (
-      <span
+      <button
+        type="button"
         className={`project-title${selected ? ' selected' : ''}`}
         onClick={() => selectProject(idx)}
         key={`title ${proj.title}`}
-      >{proj.title.replace('-', '\u2011')}</span>
+      >
+        {proj.title.replace('-', '\u2011')}
+      </button>
     );
   });
 
@@ -30,6 +34,12 @@ const Projects = ({ projects, selectedProject, selectProject }) => {
       {projComponents[selectedProject]}
     </div>
   );
-}
+};
+
+Projects.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  selectedProject: PropTypes.number.isRequired,
+  selectProject: PropTypes.func.isRequired,
+};
 
 export default Projects;
