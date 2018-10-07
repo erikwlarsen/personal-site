@@ -1,14 +1,14 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 const cesiumSource = 'node_modules/cesium/Source';
-const cesiumWorkers = '../Build/Cesium/Workers';
+// const cesiumWorkers = '../Build/Cesium/Workers';
 
 module.exports = {
   context: __dirname,
-  entry: path.resolve(__dirname, 'index.js'),
+  entry: path.resolve(__dirname, 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'dist/build'),
     filename: 'bundle.js',
@@ -42,7 +42,7 @@ module.exports = {
       {
         test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
         use: ['url-loader'],
-      }
+      },
     ],
   },
   plugins: [
@@ -51,16 +51,17 @@ module.exports = {
     // new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' } ]),
     new webpack.DefinePlugin({
       // Define relative base path in cesium for loading assets
-      CESIUM_BASE_URL: JSON.stringify('')
+      CESIUM_BASE_URL: JSON.stringify(''),
     }),
     new MiniCssExtractPlugin({
       filename: 'style.bundle.css',
     }),
   ],
   resolve: {
-		alias: {
-			// Cesium module name
-			cesium: path.resolve(__dirname, cesiumSource)
-		}
-	},
-}
+    extensions: ['js', 'jsx'],
+    alias: {
+      // Cesium module name
+      cesium: path.resolve(__dirname, cesiumSource),
+    },
+  },
+};

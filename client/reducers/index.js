@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
-import * as types from '../actions/actionTypes.js';
+import * as types from '../actions/actionTypes';
+import drawReducer from './draw';
 
 const initialState = {
   selectedComponent: 'main',
@@ -28,13 +29,13 @@ const initialState = {
       title: 'github-vision',
       link: 'https://github.com/Team-Peja/github-vision',
       description: 'visualizer for github commits',
-      image: 'https://s3.us-east-2.amazonaws.com/elarsen-personal-site/git-visual+compressed.png'
+      image: 'https://s3.us-east-2.amazonaws.com/elarsen-personal-site/git-visual+compressed.png',
     },
     {
       title: 'personal-site',
       link: 'https://github.com/erikwlarsen/personal-site',
       description: 'source code for this site',
-      image: 'https://s3.us-east-2.amazonaws.com/elarsen-personal-site/personal-site+compressed.png'
+      image: 'https://s3.us-east-2.amazonaws.com/elarsen-personal-site/personal-site+compressed.png',
     },
   ],
   helloWorlds: [
@@ -55,7 +56,7 @@ int main()
   std::cout << "Hello, World.";
   return 0;
 }`, // C++
-    `MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MoO MoO MoO MoO MoO MoO MoO Moo Moo MoO MoO MoO Moo OOO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo Moo MOo MOo MOo MOo MOo MOo MOo MOo Moo MoO MoO MoO Moo MOo MOo MOo MOo MOo MOo Moo MOo MOo MOo MOo MOo MOo MOo MOo Moo OOO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo`, // COW
+    'MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MoO MoO MoO MoO MoO MoO MoO Moo Moo MoO MoO MoO Moo OOO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo MOo Moo MOo MOo MOo MOo MOo MOo MOo MOo Moo MoO MoO MoO Moo MOo MOo MOo MOo MOo MOo Moo MOo MOo MOo MOo MOo MOo MOo MOo Moo OOO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO Moo', // COW
     `IDENTIFICATION DIVISION.
 PROGRAM-ID. Hello.
 ENVIRONMENT DIVISION.
@@ -107,13 +108,13 @@ server.listen(port, hostname, () => {
 CAN HAS STDIO?
 VISIBLE "HAI WORLD!"
 KTHXBYE`, // LolCode
-    `print_endline "Hello, World!";;`, // OCaml
+    'print_endline "Hello, World!";;', // OCaml
     `#!/bin/sh
 echo "Hello World"`, // Shell script
-    `console.log('Hello, world!');`, // JS
-    `SELECT 'Hello World!'`, // SQL
-    `\`r\`\`\`\`\`\`\`\`\`\`\`.H.e.l.l.o. .w.o.r.l.di`, // Unlambda
-    `110011100111000001111100000001000011111000011111100000000010000011001111100001100010000010011111000100000000000001001111100000111110001000000000000000001000111110010000001100001111100011000000000100111110011100111000111000001000111000001111100000111110010000011111000110011111100001111000001111000001110011111100001111000110011100000111000100011111000001111100100000110000000111000001110001111100011111000111000001000001000011000111110001000001000000011100000111001000111110001111000001111000011111100001111110000011110000000000000000011110000011100111000011110011111000111110001111100000100000000000000000000000111110001110000001110000011100011100111110001000100000000011100001111100110000000010011111000111100000111100111100010011100000111110000011111001100111100010001111000000000001000111110010000010011110011001110001000111110001100000100011111000011110011100111111000111100000111100011111000000011110000011100100001111000100011111001100011111000111100000111001110001100111100100000000000000011111000001111100010010000011100001111100100000100011100000111000110011110001001111110001100000111100011111000111100000111001000011110001001111100000111110000000011110000011110000000000000000111000001110000011000001100000111000111000001100111110000111111001001110000011111000001100011000001001111110000011100110011111000000000111000001110000111100001100`, // Whirl
+    'console.log(\'Hello, world!\');', // JS
+    'SELECT \'Hello World!\'', // SQL
+    '`r```````````.H.e.l.l.o. .w.o.r.l.di', // Unlambda
+    '110011100111000001111100000001000011111000011111100000000010000011001111100001100010000010011111000100000000000001001111100000111110001000000000000000001000111110010000001100001111100011000000000100111110011100111000111000001000111000001111100000111110010000011111000110011111100001111000001111000001110011111100001111000110011100000111000100011111000001111100100000110000000111000001110001111100011111000111000001000001000011000111110001000001000000011100000111001000111110001111000001111000011111100001111110000011110000000000000000011110000011100111000011110011111000111110001111100000100000000000000000000000111110001110000001110000011100011100111110001000100000000011100001111100110000000010011111000111100000111100111100010011100000111110000011111001100111100010001111000000000001000111110010000010011110011001110001000111110001100000100011111000011110011100111111000111100000111100011111000000011110000011100100001111000100011111001100011111000111100000111001110001100111100100000000000000011111000001111100010010000011100001111100100000100011100000111000110011110001001111110001100000111100011111000111100000111001000011110001001111100000111110000000011110000011110000000000000000111000001110000011000001100000111000111000001100111110000111111001001110000011111000001100011000001001111110000011100110011111000000000111000001110000111100001100', // Whirl
     `(defun hello-world ()
 (interactive)
 (with-current-buffer (pop-to-buffer "*Hello!*")
@@ -157,11 +158,11 @@ do
 print ("Hello, World%N")
 end
 end -- class HELLO`, // Eiffel
-`-module(hello).
+    `-module(hello).
 -export([hello_world/0]).
 
 hello_world() -> io:fwrite("hello, world\\n").`, // Erlang
-    `##X#`, // Etc
+    '##X#', // Etc
     `package main
 
 import "fmt"
@@ -169,9 +170,9 @@ import "fmt"
 func main() {
  fmt.Printf("Hello, World\\n")
 }`, // Go
-    `main = do putStrLn "Hello, world."`, // Haskell
-    `h`, // HQ9+
-    `trace('hello world');`, // ActionScript
+    'main = do putStrLn "Hello, world."', // Haskell
+    'h', // HQ9+
+    'trace(\'hello world\');', // ActionScript
     `begin 
     file rmt (kind = remote); 
     write(rmt, <"Hello World!">); 
@@ -185,21 +186,20 @@ ENDPROC`, // AmigaE
 
 const copyState = (state) => {
   const { projects, helloWorlds } = state;
-  const projectsCopy = projects.map((project) => ({ ...project }));
+  const projectsCopy = projects.map(project => ({ ...project }));
   const helloWorldsCopy = helloWorlds.slice();
   return ({ ...state, projects: projectsCopy, helloWorlds: helloWorldsCopy });
-}
+};
 
 const mainReducer = (state = initialState, action) => {
+  let selectedHello;
   switch (action.type) {
     case types.SELECT_COMPONENT:
-      const selectedComponent = action.payload;
-      return ({ ...copyState(state), selectedComponent });
+      return ({ ...copyState(state), selectedComponent: action.payload });
     case types.SELECT_PROJECT:
-      const selectedProject = action.payload;
-      return ({ ...copyState(state), selectedProject });
+      return ({ ...copyState(state), selectedProject: action.payload });
     case types.RANDOM_HELLO:
-      let selectedHello = Math.floor(Math.random() * state.helloWorlds.length);
+      selectedHello = Math.floor(Math.random() * state.helloWorlds.length);
       while (selectedHello === state.selectedHello) {
         selectedHello = Math.floor(Math.random() * state.helloWorlds.length);
       }
@@ -207,10 +207,11 @@ const mainReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 const reducers = combineReducers({
   main: mainReducer,
+  draw: drawReducer,
 });
 
 export default reducers;

@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import Globe from '../components/Globe.jsx';
-import Menu from '../components/Menu.jsx';
-import Main from '../components/Main.jsx';
-import Projects from '../components/Projects.jsx';
-import About from '../components/About.jsx';
-import * as actions from '../actions/actionCreators.js';
+import Menu from '../components/Menu';
+import Main from '../components/Main';
+import Projects from '../components/Projects';
+import About from '../components/About';
+import Draw from '../components/Draw';
+import * as actions from '../actions/actionCreators';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   selectedComponent: state.main.selectedComponent,
   selectedProject: state.main.selectedProject,
   projects: state.main.projects,
@@ -21,50 +23,60 @@ const mapDispatchToProps = {
   randomHello: actions.randomHello,
 };
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+const App = (props) => {
+  const {
+    selectComponent,
+    selectedComponent,
+    selectProject,
+    selectedProject,
+    projects,
+    randomHello,
+    helloWorlds,
+    selectedHello,
+  } = props;
 
-  render() {
-    const {
-      selectComponent,
-      selectedComponent,
-      selectProject,
-      selectedProject,
-      projects,
-      randomHello,
-      helloWorlds,
-      selectedHello,
-    } = this.props;
+  const componentMap = {
+    main: <Main
+      randomHello={randomHello}
+      selectedHello={helloWorlds[selectedHello]}
+    />,
+    projects: <Projects
+      projects={projects}
+      selectProject={selectProject}
+      selectedProject={selectedProject}
+    />,
+    // globe: <Globe />,
+    draw: <Draw />,
+    about: <About />,
+  };
 
-    const componentMap = {
-      main: <Main
-        randomHello={randomHello}
-        selectedHello={helloWorlds[selectedHello]}
-      />,
-      projects: <Projects
-        projects={projects}
-        selectProject={selectProject}
-        selectedProject={selectedProject}
-      />,
-      // globe: <Globe />,
-      about: <About />,
-    }
-
-    return (
-      <div id="app">
-        <div id="header">erik<br></br>larsen</div>
-        <Menu
-          selectComponent={selectComponent}
-          selectedComponent={selectedComponent}
-        />
-        <div id="component-container">
-          {componentMap[selectedComponent]}
-        </div>
+  return (
+    <div id="app">
+      <div id="header">
+      erik
+        <br />
+      larsen
       </div>
-    );
-  }
-}
+      <Menu
+        selectComponent={selectComponent}
+        selectedComponent={selectedComponent}
+      />
+      <div id="component-container">
+        {componentMap[selectedComponent]}
+      </div>
+    </div>
+  );
+};
+
+App.propTypes = {
+  selectComponent: PropTypes.func.isRequired,
+  selectedComponent: PropTypes.string.isRequired,
+  selectProject: PropTypes.func.isRequired,
+  selectedProject: PropTypes.number.isRequired,
+  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  randomHello: PropTypes.func.isRequired,
+  helloWorlds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedHello: PropTypes.number.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
